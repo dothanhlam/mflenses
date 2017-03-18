@@ -1,0 +1,125 @@
+{
+  "schema": {
+    "vendor": "string",
+    "focalRange": "string",
+    "aperture": "string",
+    "mount": "",
+    "name": "string",
+    "type": "string"
+  },
+  "types": [
+    "Fisheye",
+    "Long Telephoto",
+    "Macro",
+    "Medium Telephoto",
+    "Normal",
+    "Short Telephoto",
+    "Tilt-Shift",
+    "UltraWide",
+    "UV",
+    "Wide",
+    "Zoom"
+  ],
+  "vendors": [
+    "Vivitar"
+  ],
+  "mounts": [
+    "M42",
+    "PK",
+    "EOS"
+  ],
+  "lenses": [
+    {
+      "id": "0",
+      "vendor": "Vivitar",
+      "focalRange": "135mm",
+      "aperture": "2.8",
+      "mount": "M42",
+      "name": "Vivitar Auto Telephoto 135mm f/2.8-22 (v2)",
+      "type": "Medium Telephoto",
+      "elements": "4",
+      "mdf": "143cm",
+      "weight": "370g",
+      "blades": "6",
+      "filter": "55mm",
+      "dimension": "62mm/95(81)mm",
+      "presetAperture": "false",
+      "universalMount":	"none",
+      "description": "no description"
+    },
+    {
+      "id": "1",
+      "vendor": "Vivitar",
+      "focalRange": "135mm",
+      "aperture": "2.3",
+      "mount": "M42",
+      "name": "Vivitar Series 1 Auto Telephoto 135mm f/2.3-22",
+      "type": "Medium Telephoto",
+      "elements": "4",
+      "mdf": "89cm",
+      "weight": "624g",
+      "blades": "8",
+      "filter": "72mm",
+      "dimension": "80mm/86mm",
+      "presetAperture": "false",
+      "universalMount":	"none",
+      "description": "Series 1 Auto Telephoto"
+    },
+    {
+      "id": "2",
+      "vendor": "A.Schacht Ulm",
+      "focalRange": "50mm",
+      "aperture": "2.8",
+      "mount": "M42",
+      "name": "A.Schacht Ulm Edixa-M-Travenar-A 50mm f/2.8-22",
+      "type": "Normal",
+      "elements": "4 in 3 groups",
+      "mdf": "N/A",
+      "weight": "N/A",
+      "blades": "12",
+      "filter": "49mm",
+      "dimension": "80mm/86mm",
+      "presetAperture": "yes",
+      "universalMount":	"none",
+      "description": "Edixa-M-Travenar-A"
+    },
+    {
+      "id": "3",
+      "vendor": "A.Schacht Ulm",
+      "focalRange": "50mm",
+      "aperture": "2.8",
+      "mount": "M42",
+      "name": "A.Schacht Ulm Edixa-Travenar 50mm f/2.8-16",
+      "type": "Normal",
+      "elements": "4 in 3 groups",
+      "mdf": "N/A",
+      "weight": "N/A",
+      "blades": "12",
+      "filter": "49mm",
+      "dimension": "80mm/86mm",
+      "presetAperture": "no",
+      "universalMount":	"none",
+      "description": "Edixa-Travenar"
+    }
+  ],
+  "assets": [
+    {
+      "id": "0",
+      "lensId": "0",
+      "file": "vivitar_auto_telephoto_135mm_f28-22_m42_04.jpg",
+      "alt": ""
+    },
+    {
+      "id": "1",
+      "lensId": "1",
+      "file": "vivitar_series_1_auto_telephoto_135mm_f2_3-22_m42_06.jpg",
+      "alt": ""
+    },
+    {
+      "id": "3",
+      "lensId": "3",
+      "file": "a_schacht_ulm_edixa-travenar_50mm_f28-16_m42_02.jpg",
+      "alt": ""
+    }
+  ]
+}
