@@ -26,35 +26,31 @@ export default class Home extends Component {
     }
 
     buildLensItem = (lens) => {
-        const file = lens.get('file');
+        const file = lens.get('file') ? lens.get('file') : 'no-photo.png';
 
         return (
-            <div>
-                <span>{lens.get('name')}</span>
-                { file ? <img src={`assets/img/${file}`}/> : null }
-                <br/>
-                <span>{lens.get('description')}</span>
-                <hr/>
+            <div className="box" key={lens.get('id')}>
+                <div className="boxInner">
+                    {<img src={`assets/img/${file}`}/>}
+                    <div className="titleBox">{lens.get('name')}</div>
+                </div>
             </div>
         );
     }
 
     buildLensesList = (lenses) => {
         return (
-            <ul>
+            <div className="wrap">
                 {
-                    lenses.map(e =>
-                        <li key={e.get('id')}> { this.buildLensItem(e) } </li>
-                    )
+                    lenses.map(e => this.buildLensItem(e))
                 }
-            </ul>);
+            </div>);
     }
 
     render() {
         const {asyncLoading, lenses} = this.props;
         return (
-            <div className='Home'>
-                <p>Home page</p>
+            <div>
                 { asyncLoading ? <p>loading ...</p> : null }
                 { lenses ? this.buildLensesList(lenses) : null }
             </div>
