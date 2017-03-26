@@ -17,9 +17,5 @@ export function testAsync() {
 }
 
 export function getLenses(params) { // array of id
-    return fetch('/api/lenses', params).then(response => response.json());
-}
-
-export function getAssets(params) {
-    return fetch('/api/assets', params).then(res => res.json());
+    return fetch(`/api/lenses?${params}`, {}).then(response => response.json());
 }

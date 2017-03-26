@@ -557,6 +557,7 @@ header {
   top: 10px;
   bottom: 10px;
   overflow: hidden;
+  border: thin solid darkgrey;
 }
 
 .boxInner img {
@@ -583,6 +584,17 @@ body.no-touch .boxInner:hover .titleBox, body.touch .boxInner.touchFocus .titleB
   margin-bottom: 0;
 }
 
+.lensDetail {
+  h2 {
+    text-align: center;
+  }
+
+  .lensInfo {
+    display: inline-block;
+    margin-left: 20px;
+  }
+
+}
 
 @media only screen and (max-width : 480px) {
   /* Smartphone view: 1 tile */

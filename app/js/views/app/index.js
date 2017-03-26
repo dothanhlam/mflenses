@@ -37,8 +37,16 @@ export default class App extends Component {
     }
 
 
-    toggleMe = () => {
+    toggleNavigateVisible = () => {
         this.setState({  navigateVisible: !this.state.navigateVisible});
+    }
+
+    renderSubCategoriesArea = () => {
+        return (
+            <div>
+                category goes here
+            </div>
+        );
     }
 
     render() {
@@ -49,7 +57,7 @@ export default class App extends Component {
         })
         return (
             <div>
-                <Header device={this.state.device} toggleParent={this.toggleMe}/>
+                <Header device={this.state.device} toggleParent={this.toggleNavigateVisible}/>
                 <main className={contentClass}>
                         { children }
                 </main>

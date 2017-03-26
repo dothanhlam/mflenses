@@ -41,5 +41,5 @@ ReactDOM.render(
                 <DevTools />
             </div> }
     </Provider>,
-    document.body
+    document.getElementById('root')
 );

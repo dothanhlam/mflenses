@@ -42,9 +42,7 @@ function *mergeById(a, b) {
 
 export function *getLensesSaga({params}) {
     try {
-        const lenses = yield call(getLenses, params);
-        const assets = yield call(getAssets, {});
-        const data = yield call(mergeById, lenses, assets);
+        const data = yield call(getLenses, params);
         yield put({type: GET_LENSES_SUCCESS, data}); // data ?
     }
     catch (error) {

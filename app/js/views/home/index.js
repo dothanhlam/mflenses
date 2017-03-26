@@ -1,8 +1,8 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
+import { browserHistory } from 'react-router';
 
 import {getLenses} from 'actions/lens';
-
 
 @connect(state => ({
     asyncLoading: state.app.get('asyncLoading'),
@@ -26,12 +26,13 @@ export default class Home extends Component {
     }
 
     buildLensItem = (lens) => {
-        const file = lens.get('file') ? lens.get('file') : 'no-photo.png';
-
+        const file = lens.get('gallery') ? Array.from(lens.get('gallery')) : 'no-photo.png';
         return (
-            <div className="box" key={lens.get('id')}>
+            <div className="box" key={lens.get('id')} onClick={(e) => {
+                browserHistory.push(`/lens/${lens.get('id')}`);
+            }}>
                 <div className="boxInner">
-                    {<img src={`assets/img/${file}`}/>}
+                    {<img src={`http://m42lens.com/${file[0]}`}/>}
                     <div className="titleBox">{lens.get('name')}</div>
                 </div>
             </div>

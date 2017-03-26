@@ -1,10 +1,8 @@
 import React, {Component, PropTypes} from 'react';
-import classNames from 'classname';
 
 import MainNavigationWrapper from './main-navigation-wrapper';
 
-import {IndexLink, Link} from 'react-router';
-import {routeCodes} from '../../routes';
+import {Link} from 'react-router';
 
 export default class Header extends Component {
 
@@ -38,7 +36,7 @@ export default class Header extends Component {
         return (
             <header className={ this.state.toggleNavigationMenu ? "nav-is-visible" : null }>
                 <div className="cd-logo">
-                    <a href="#0"><img src="../../../assets/img/cd-logo.svg" alt="Logo" /></a>
+                    <Link to="/"><img src="../../../assets/img/cd-logo.svg" alt="Logo" /></Link>
                 </div>
                 { this.props.device === 'desktop' ? <MainNavigationWrapper toggleNavigationMenu={this.state.toggleNavigationMenu}/> : null }
                 <a className="cd-nav-trigger" onClick={this.navigationClickHandler}>Menu<span></span></a>
