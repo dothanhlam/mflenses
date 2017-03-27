@@ -12,7 +12,8 @@ const publicPath = '/';
 export const routeCodes = {
     HOME: publicPath,
     ABOUT: `${ publicPath }about`,
-    LENS: `${ publicPath }lens/:id`
+    LENS: `${ publicPath }lens`,
+    LENS_DETAIL: `${ publicPath }lens/:id`
 };
 
 export default class Routes extends Component {
@@ -22,7 +23,8 @@ export default class Routes extends Component {
                 <Route path={ publicPath } component={ App }>
                     <IndexRoute component={ Home }/>
                     <Route path={ routeCodes.ABOUT } component={ About }/>
-                    <Route path={ routeCodes.LENS } components={ Lens } />
+                    <Route path={ routeCodes.LENS } component={ Home }/>
+                    <Route path={ routeCodes.LENS_DETAIL } components={ Lens } />
                     <Route path='*' component={ NotFound }/>
                 </Route>
             </Router>
