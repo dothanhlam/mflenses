@@ -1,14 +1,20 @@
 import React, {Component, PropTypes} from 'react';
+import {connect} from 'react-redux';
 
 import Header from '../../components/header/header';
 
 import MainNavigationWrapper from '../../components/header/main-navigation-wrapper';
 import classNames from 'classname';
 
+import { windowSizeChanged } from '../../actions/app';
 
+@connect(state => ({
+    window: state.app.get('window'),
+}))
 export default class App extends Component {
     static propTypes = {
         children: PropTypes.object,
+        dispatch: PropTypes.func,
     }
 
     constructor(props) {
@@ -20,8 +26,14 @@ export default class App extends Component {
     }
 
     updateDimensions = () => {
+        const {dispatch} = this.props
         const isMobile = window.innerWidth <= 1024;
-        this.setState({device: isMobile ? 'mobile' : 'desktop'});
+        const device  = isMobile ? 'mobile' : 'desktop';
+        this.setState({device});
+        dispatch(windowSizeChanged({
+            width: window.innerWidth,
+            height: window.innerHeight,
+            device }));
     }
 
     componentWillMount() {

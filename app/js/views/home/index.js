@@ -3,18 +3,21 @@ import {connect} from 'react-redux';
 import { browserHistory } from 'react-router';
 
 import Pagination from 'rc-pagination';
+import Carousel from 'nuka-carousel';
 
 import {getLenses} from 'actions/lens';
 
 @connect(state => ({
     asyncLoading: state.app.get('asyncLoading'),
     lenses: state.app.get('lenses'),
+    window: state.app.get('window'),
 }))
 export default class Home extends Component {
 
     static propTypes = {
         asyncLoading: PropTypes.bool,
         lenses: PropTypes.array,
+        window: PropTypes.object,
         dispatch: PropTypes.func,
     }
 
@@ -63,9 +66,17 @@ export default class Home extends Component {
     }
 
     render() {
-        const {asyncLoading, lenses} = this.props;
+        const {asyncLoading, lenses, window } = this.props;
         return (
             <div>
+                {
+                    window.get('device') === "desktop" ?
+                    <Carousel initialSlideHeight={0.5} autoplay={true}>
+                        <img src="assets/banner/slider1.jpg"/>
+                        <img src="assets/banner/slider2.jpg"/>
+                        <img src="assets/banner/slider3.jpg"/>
+                    </Carousel> : null
+                }
                 { asyncLoading ? <p>loading ...</p> : null }
                 { lenses ? this.buildLensesList(lenses) : null }
                 <Pagination onChange={this.paginationChangeHandler} current={this.state.current} total={140} />

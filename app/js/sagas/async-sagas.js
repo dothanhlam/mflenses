@@ -5,6 +5,7 @@ import {
     TEST_ASYNC_ACTION_START,
     TEST_ASYNC_ACTION_ERROR,
     TEST_ASYNC_ACTION_SUCCESS,
+    UPDATE_WINDOW_SIZE,
 } from 'actions/app';
 
 import {
@@ -31,12 +32,8 @@ function testAsyncError(error) {
     };
 }
 
-function *mergeById(a, b) {
-    let hash = new Map();
-    a.concat(b).forEach(function(obj) {
-        hash.set(obj.id, Object.assign(hash.get(obj.lensId) || {}, obj))
-    });
-    return Array.from(hash.values());
+export function *updateWindow({size}) {
+    yield put({type: UPDATE_WINDOW_SIZE, size});
 }
 // LENSES
 

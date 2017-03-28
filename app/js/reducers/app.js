@@ -5,6 +5,7 @@ import {
     TEST_ASYNC_ACTION_START,
     TEST_ASYNC_ACTION_ERROR,
     TEST_ASYNC_ACTION_SUCCESS,
+    UPDATE_WINDOW_SIZE,
 } from 'actions/app';
 
 import {
@@ -18,13 +19,19 @@ const initialState = Map({
     asyncLoading: false,
     asyncError: null,
     asyncData: null,
-    lenses: [], // move out later
+    lenses: [],
+    window: null,
 });
 
 const actionsMap = {
+    [UPDATE_WINDOW_SIZE]: (state, action) => {
+        return state.merge({
+            window: action.size,
+        });
+    },
+
     [TEST_ACTION]: (state) => {
         const counter = state.get('counter') + 1;
-
         return state.merge({
             counter,
         });
