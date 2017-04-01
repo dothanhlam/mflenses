@@ -1,10 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-
-import Header from '../../components/header/header';
-
-import MainNavigationWrapper from '../../components/header/main-navigation-wrapper';
-import classNames from 'classname';
+import MegaMenu from '../../components/mega-menu';
 
 import { windowSizeChanged } from '../../actions/app';
 
@@ -63,17 +59,12 @@ export default class App extends Component {
 
     render() {
         const {children} = this.props;
-        const contentClass = classNames({
-            'cd-main-content': true,
-            'nav-is-visible': this.state.navigateVisible
-        })
         return (
             <div>
-                <Header device={this.state.device} toggleParent={this.toggleNavigateVisible}/>
-                <main className={contentClass}>
+                <MegaMenu />
+                <main>
                         { children }
                 </main>
-                { this.state.device === 'mobile' ? <MainNavigationWrapper toggleNavigationMenu={this.state.navigateVisible} /> : null }
             </div>
         );
     }

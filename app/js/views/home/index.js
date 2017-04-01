@@ -69,14 +69,6 @@ export default class Home extends Component {
         const {asyncLoading, lenses, window } = this.props;
         return (
             <div>
-                {
-                    window.get('device') === "desktop" ?
-                    <Carousel initialSlideHeight={0.5} autoplay={true}>
-                        <img src="assets/banner/slider1.jpg"/>
-                        <img src="assets/banner/slider2.jpg"/>
-                        <img src="assets/banner/slider3.jpg"/>
-                    </Carousel> : null
-                }
                 { asyncLoading ? <p>loading ...</p> : null }
                 { lenses ? this.buildLensesList(lenses) : null }
                 <Pagination onChange={this.paginationChangeHandler} current={this.state.current} total={140} />
