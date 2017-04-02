@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import { browserHistory } from 'react-router';
 
 import Pagination from 'rc-pagination';
-import Carousel from 'nuka-carousel';
+import Banner from '../../components/banner';
 
 import {getLenses} from 'actions/lens';
 
@@ -69,9 +69,10 @@ export default class Home extends Component {
         const {asyncLoading, lenses, window } = this.props;
         return (
             <div>
+                <Banner window={window.get('device')}/>
                 { asyncLoading ? <p>loading ...</p> : null }
                 { lenses ? this.buildLensesList(lenses) : null }
-                <Pagination onChange={this.paginationChangeHandler} current={this.state.current} total={140} />
+                <Pagination onChange={this.paginationChangeHandler} current={this.state.current} total={158} />
             </div>
         );
     }

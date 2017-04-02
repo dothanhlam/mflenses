@@ -92,6 +92,11 @@ export default class MegaMenu extends Component {
                                 <li><a href="#">Others</a></li>
                             </ul>
                         </li>
+                        <li id="search">
+                            <form action="#0">
+                                <input type="text" name="search_text" id="search_text" placeholder="Search"/>
+                            </form>
+                        </li>
                     </ul>
                 </div>
             </div>

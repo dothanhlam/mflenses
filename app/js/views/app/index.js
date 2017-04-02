@@ -44,27 +44,12 @@ export default class App extends Component {
         window.removeEventListener("resize", this.updateDimensions);
     }
 
-
-    toggleNavigateVisible = () => {
-        this.setState({  navigateVisible: !this.state.navigateVisible});
-    }
-
-    renderSubCategoriesArea = () => {
-        return (
-            <div>
-                category goes here
-            </div>
-        );
-    }
-
     render() {
         const {children} = this.props;
         return (
             <div>
                 <MegaMenu />
-                <main>
-                        { children }
-                </main>
+                { children }
             </div>
         );
     }

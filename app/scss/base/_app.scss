@@ -12,6 +12,38 @@ a {
   color: #333;
 }
 
+@keyframes slidy {
+  0% { left: 0%; }
+  20% { left: 0%; }
+  25% { left: -100%; }
+  45% { left: -100%; }
+  50% { left: -200%; }
+  70% { left: -200%; }
+  75% { left: -300%; }
+  95% { left: -300%; }
+  100% { left: -400%; }
+}
+
+div#slider {
+  overflow: hidden;
+  height: 400px;
+}
+
+div#slider figure img {
+  width: 20%;
+  object-fit: fill;
+  float: left;
+}
+div#slider figure {
+  position: relative;
+  width: 500%;
+  margin: 0;
+  left: 0;
+  text-align: left;
+  font-size: 0;
+  animation: 30s slidy infinite;
+}
+
 .wrap {
   overflow: hidden;
   margin: 10px;
@@ -97,23 +129,5 @@ body.no-touch .boxInner:hover .titleBox, body.touch .boxInner.touchFocus .titleB
     width: 25%;
     padding-bottom: 25%;
   }
-}
 
-@media only screen and (min-width: 1024px) {
-  .cd-main-content::before {
-    content: 'desktop';
-  }
-}
-
-@media only screen and (min-width: 1024px) {
-  .cd-main-content {
-    padding-top: 80px;
-    &.nav-is-visible {
-      -webkit-transform: translateX(0);
-      -moz-transform: translateX(0);
-      -ms-transform: translateX(0);
-      -o-transform: translateX(0);
-      transform: translateX(0);
-    }
-  }
 }
