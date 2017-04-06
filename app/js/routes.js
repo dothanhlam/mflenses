@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Router, Route, IndexRoute, browserHistory} from 'react-router';
+import { IntlActions } from 'react-redux-multilingual'
 
 import App from 'views/app';
 import Home from 'views/home';
@@ -11,23 +12,33 @@ const publicPath = '/';
 
 export const routeCodes = {
     HOME: publicPath,
-    ABOUT: `${ publicPath }about`,
-    LENS: `${ publicPath }lens`,
-    LENS_DETAIL: `${ publicPath }lens/:id`
+    ABOUT: 'about',
+    LENS: 'lens',
+    LENS_DETAIL: 'lens/:id',
 };
 
-export default class Routes extends Component {
-    render() {
-        return (
-            <Router history={ browserHistory }>
-                <Route path={ publicPath } component={ App }>
-                    <IndexRoute component={ Home }/>
-                    <Route path={ routeCodes.ABOUT } component={ About }/>
-                    <Route path={ routeCodes.LENS } component={ Home }/>
-                    <Route path={ routeCodes.LENS_DETAIL } components={ Lens } />
-                    <Route path='*' component={ NotFound }/>
+export const getRoutes = (store)  => {
+    const innerRoutes = (
+        <Route>
+            <IndexRoute component={ Home }/>
+            <Route path={ routeCodes.ABOUT } component={ About }/>
+            <Route path={ routeCodes.LENS } component={ Home }/>
+            <Route path={ routeCodes.LENS_DETAIL } components={ Lens } />
+            <Route path='*' component={ NotFound }/>
+        </Route>
+    );
+
+    return (
+        <Router history={ browserHistory }>
+            <Route path={ publicPath } component={ App }>
+                <Route path="en" onEnter={() => store.dispatch(IntlActions.setLocale('en'))}>
+                    {innerRoutes}
                 </Route>
-            </Router>
-        );
-    }
+                <Route path="zh" onEnter={() => store.dispatch(IntlActions.setLocale('zh'))}>
+                    {innerRoutes}
+                </Route>
+                {innerRoutes}
+            </Route>
+        </Router>
+    );
 }

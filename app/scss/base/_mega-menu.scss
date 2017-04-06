@@ -5,7 +5,6 @@
 - Author: Mario Loncarek
 - Author web site: http://marioloncarek.com
 */
-
 .menu-container {
   width: 100%;
   margin: 0 auto;
@@ -79,6 +78,22 @@
       }
       &:hover {
         background: #f0f0f0;
+      }
+
+      img {
+        position: absolute;
+        right: 0.4em;
+        top: 55%;
+        bottom: auto;
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+        height: 36px;
+        width: 36px;
+        border-radius: 50%;
+
       }
       > ul {
         display: none;

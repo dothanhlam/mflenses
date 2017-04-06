@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
+import { IntlProvider } from 'react-redux-multilingual'
+import translations from './translations'
 
 import 'babel-polyfill';
 
 import configureStore from 'stores/configure-store';
 
-import Routes from 'routes';
+import { getRoutes } from 'routes';
+
 
 // Monitors are separate packages, and you can make a custom one
 import LogMonitor from 'redux-devtools-log-monitor';
@@ -34,12 +37,15 @@ let store = configureStore(isProduction, DevTools.instrument);
 // Render it to DOM
 ReactDOM.render(
     <Provider store={ store }>
+        <IntlProvider translations={translations}>
+
         { isProduction ?
-            <Routes /> :
+            getRoutes(store):
             <div>
-                <Routes />
+                {getRoutes(store)}
                 <DevTools />
             </div> }
+        </IntlProvider>
     </Provider>,
     document.getElementById('root')
 );

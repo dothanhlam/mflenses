@@ -1,9 +1,11 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import MegaMenu from '../../components/mega-menu';
+import { withTranslate } from 'react-redux-multilingual'
 
 import { windowSizeChanged } from '../../actions/app';
 
+@withTranslate
 @connect(state => ({
     window: state.app.get('window'),
 }))
@@ -11,6 +13,7 @@ export default class App extends Component {
     static propTypes = {
         children: PropTypes.object,
         dispatch: PropTypes.func,
+        translate: PropTypes.func,
     }
 
     constructor(props) {
@@ -38,6 +41,7 @@ export default class App extends Component {
 
     componentDidMount() {
         window.addEventListener("resize", this.updateDimensions);
+        console.log('params: ', this.props);
     }
 
     componentWillUnmount() {
@@ -45,10 +49,11 @@ export default class App extends Component {
     }
 
     render() {
-        const {children} = this.props;
+        const {children, translate} = this.props;
         return (
             <div>
                 <MegaMenu />
+                {translate('hello', { name: 'John Doe' })}
                 { children }
             </div>
         );

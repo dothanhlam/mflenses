@@ -64,7 +64,8 @@ export default class MegaMenu extends Component {
                                 </li>
                             </ul>
                         </li>
-                        <li><a href="#">News</a>
+                        <li>
+                            <a href="#">News</a>
                             <ul className="normal-sub">
                                 <li><a href="#">Today</a></li>
                                 <li><a href="#">Calendar</a></li>
@@ -96,6 +97,9 @@ export default class MegaMenu extends Component {
                             <form action="#0">
                                 <input type="text" name="search_text" id="search_text" placeholder="Search"/>
                             </form>
+                        </li>
+                        <li>
+                            <img src="//secure.gravatar.com/avatar/a8c9086afbd1cbcc334bbb0bec96bca2" />
                         </li>
                     </ul>
                 </div>
