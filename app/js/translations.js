@@ -8,6 +8,7 @@ module.exports = {
             news: 'News',
             contact: 'Contact',
             search: 'Search',
+            facebookLogin: 'Facebook Login',
         }
     },
     vi: {
@@ -19,6 +20,7 @@ module.exports = {
             news: 'Tin tức',
             contact: 'Liên hệ',
             search: 'Tìm kiếm',
+            facebookLogin: 'Đăng nhập',
         }
     }
 }

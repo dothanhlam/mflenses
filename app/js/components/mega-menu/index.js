@@ -34,7 +34,7 @@ export default class MegaMenu extends Component {
                 <div className="menu">
                     <a className="menu-mobile" onClick={this.toggleMobileMenu}>Navigation</a>
                     <ul className={toggleMobileMenu}>
-                        <li><a href={`${locale}/`}>{translate('home')}</a></li>
+                        <li><a href={`/${locale}`}>{translate('home')}</a></li>
                         <li className="menu-dropdown-icon">
                             <a href="#">{translate('categories')}</a>
                             <ul>
@@ -106,7 +106,10 @@ export default class MegaMenu extends Component {
                             </form>
                         </li>
                         <li>
-                            <FacebookLogin socialId="271112816669920" responseHandler={updateAuthenticationStatus}/>
+                            <FacebookLogin
+                                caption={translate('facebookLogin')}
+                                socialId="271112816669920"
+                                responseHandler={updateAuthenticationStatus}/>
                         </li>
                     </ul>
                 </div>

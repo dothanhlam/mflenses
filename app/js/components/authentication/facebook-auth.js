@@ -10,6 +10,7 @@ export class FacebookLogin extends Component {
         fields: PropTypes.string,
         version: PropTypes.string,
         class: PropTypes.string,
+        caption: PropTypes.string,
     }
 
     static defaultProps = {
@@ -19,6 +20,7 @@ export class FacebookLogin extends Component {
         fields: "id,email,name",
         version: "v2.8",
         class: "facebook-login",
+        caption: "Login with Facebook"
     };
 
     constructor(props) {
@@ -102,8 +104,8 @@ export class FacebookLogin extends Component {
                 e.preventDefault();
                 FB.login(this.checkLoginState, { scope: this.props.scope });
             }}>
-                Login with Facebook
-            </button>
+                { this.props.caption }
+                </button>
         )
     }
 
