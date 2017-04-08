@@ -49,11 +49,10 @@ export default class App extends Component {
     }
 
     render() {
-        const {children, translate} = this.props;
+        const {children, translate } = this.props;
         return (
             <div>
-                <MegaMenu />
-                {translate('hello', { name: 'John Doe' })}
+                <MegaMenu translate={translate}/>
                 { children }
             </div>
         );

@@ -1,8 +1,13 @@
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 import classNames from 'classname';
+import { FacebookLogin } from '../authentication/facebook-auth';
+
 
 export default class MegaMenu extends Component {
 
+    static propTypes = {
+        translate: PropTypes.func.isRequired,
+    }
 
     constructor(props) {
         super(props);
@@ -12,12 +17,18 @@ export default class MegaMenu extends Component {
     }
 
 
+    responseFacebook = (response)  => {
+        console.log('responseFacebook: ', response);
+        //anything else you want to do(save to localStorage)...
+    }
+
     toggleMobileMenu = (e) => {
         this.setState({toggleMobileMenu: !this.state.toggleMobileMenu});
         e.preventDefault();
     }
 
     render() {
+        const {translate} = this.props;
         const toggleMobileMenu = classNames({
             'show-on-mobile': this.state.toggleMobileMenu
         })
@@ -27,9 +38,9 @@ export default class MegaMenu extends Component {
                 <div className="menu">
                     <a className="menu-mobile" onClick={this.toggleMobileMenu}>Navigation</a>
                     <ul className={toggleMobileMenu}>
-                        <li><a href="/">Home</a></li>
+                        <li><a href="/">{translate('home')}</a></li>
                         <li className="menu-dropdown-icon">
-                            <a href="#">Categories</a>
+                            <a href="#">{translate('categories')}</a>
                             <ul>
                                 <li><a href="#">Vendor</a>
                                     <ul>
@@ -65,14 +76,14 @@ export default class MegaMenu extends Component {
                             </ul>
                         </li>
                         <li>
-                            <a href="#">News</a>
+                            <a href="#">{translate('news')}</a>
                             <ul className="normal-sub">
                                 <li><a href="#">Today</a></li>
                                 <li><a href="#">Calendar</a></li>
                                 <li><a href="#">Sport</a></li>
                             </ul>
                         </li>
-                        <li className="menu-dropdown-icon"><a href="#">Contact</a>
+                        <li className="menu-dropdown-icon"><a href="#">{translate('contact')}</a>
                             <ul>
                                 <li><a href="#">Seller</a>
                                     <ul>
@@ -95,11 +106,12 @@ export default class MegaMenu extends Component {
                         </li>
                         <li id="search">
                             <form action="#0">
-                                <input type="text" name="search_text" id="search_text" placeholder="Search"/>
+                                <input type="text" name="search_text" id="search_text" placeholder={translate('search')}/>
                             </form>
                         </li>
                         <li>
-                            <img src="//secure.gravatar.com/avatar/a8c9086afbd1cbcc334bbb0bec96bca2" />
+                            <FacebookLogin socialId="271112816669920"
+                                           responseHandler={this.responseFacebook}/>
                         </li>
                     </ul>
                 </div>

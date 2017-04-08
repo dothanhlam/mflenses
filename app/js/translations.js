@@ -2,13 +2,23 @@ module.exports = {
     en: {
         locale: 'en-US',
         messages: {
-            hello: 'Hello! How are you?'
+            hello: 'Hello! How are you?',
+            home: 'Home',
+            categories: 'Categories',
+            news: 'News',
+            contact: 'Contact',
+            search: 'Search',
         }
     },
-    zh: {
-        locale: 'zh',
+    vi: {
+        locale: 'vi',
         messages: {
-            hello: '你好！你好吗'
+            hello: 'Xin chào!',
+            home: 'Trang chủ',
+            categories: 'Danh mục',
+            news: 'Tin tức',
+            contact: 'Liên hệ',
+            search: 'Tìm kiếm',
         }
     }
 }

@@ -11,6 +11,7 @@ import {getLenses} from 'actions/lens';
     asyncLoading: state.app.get('asyncLoading'),
     lenses: state.app.get('lenses'),
     window: state.app.get('window'),
+    locale: state.Intl.locale,
 }))
 export default class Home extends Component {
 
@@ -19,6 +20,7 @@ export default class Home extends Component {
         lenses: PropTypes.array,
         window: PropTypes.object,
         dispatch: PropTypes.func,
+        locale: PropTypes.string,
     }
 
     constructor() {
@@ -34,10 +36,12 @@ export default class Home extends Component {
     }
 
     buildLensItem = (lens) => {
+        const { locale } = this.props;
+
         const file = lens.get('gallery') ? Array.from(lens.get('gallery')) : 'no-photo.png';
         return (
             <div className="box" key={lens.get('id')} onClick={(e) => {
-                browserHistory.push(`/lens/${lens.get('id')}`);
+                browserHistory.push(`${locale}/lens/${lens.get('id')}`);
             }}>
                 <div className="boxInner">
                     {<img src={`http://m42lens.com/${file[0]}`}/>}

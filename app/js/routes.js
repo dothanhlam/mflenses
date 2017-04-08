@@ -18,6 +18,7 @@ export const routeCodes = {
 };
 
 export const getRoutes = (store)  => {
+    const localization = ['en', 'vi'];
     const innerRoutes = (
         <Route>
             <IndexRoute component={ Home }/>
@@ -31,12 +32,15 @@ export const getRoutes = (store)  => {
     return (
         <Router history={ browserHistory }>
             <Route path={ publicPath } component={ App }>
-                <Route path="en" onEnter={() => store.dispatch(IntlActions.setLocale('en'))}>
-                    {innerRoutes}
-                </Route>
-                <Route path="zh" onEnter={() => store.dispatch(IntlActions.setLocale('zh'))}>
-                    {innerRoutes}
-                </Route>
+                {
+                    localization.map(lang => {
+                        return (
+                            <Route key={lang} path={lang} onEnter={() => store.dispatch(IntlActions.setLocale(lang))}>
+                                {innerRoutes}
+                            </Route>
+                        );
+                    })
+                }
                 {innerRoutes}
             </Route>
         </Router>

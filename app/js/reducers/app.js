@@ -21,6 +21,7 @@ const initialState = Map({
     asyncData: null,
     lenses: [],
     window: null,
+    account: null,
 });
 
 const actionsMap = {

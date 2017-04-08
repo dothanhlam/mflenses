@@ -8,6 +8,17 @@ export const TEST_ASYNC_ACTION_SUCCESS = 'TEST_ASYNC_ACTION_SUCCESS';
 export const WINDOW_SIZE_CHANGED = 'WINDOW_SIZE_CHANGED';
 export const UPDATE_WINDOW_SIZE = 'UPDATE_WINDOW_SIZE';
 
+export const AUTHENTICATE = 'AUTHENTICATE';
+export const AUTHENTICATE_SUCCESS = 'AUTHENTICATE_SUCCESS';
+export const AUTHENTICATE_ERROR = 'AUTHENTICATE_ERROR';
+
+export function authenticate(accountType) {
+    return {
+        type: AUTHENTICATE,
+        accountType, // facebook, google, or twitter
+    }
+}
+
 export function windowSizeChanged(size) {
     return {
         type: WINDOW_SIZE_CHANGED,

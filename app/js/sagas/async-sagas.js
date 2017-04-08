@@ -32,6 +32,7 @@ function testAsyncError(error) {
     };
 }
 
+// app
 export function *updateWindow({size}) {
     yield put({type: UPDATE_WINDOW_SIZE, size});
 }
