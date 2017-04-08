@@ -85,6 +85,20 @@
         top: 20%;
         right: 0.4em;
         height: 60%;
+
+        border: 0;
+        background: none;
+        box-shadow:none;
+        border-radius: 0px;
+        color: #FFF;
+        font-size: 14px;
+        &.facebook {
+          background-color: #5B7BD5;
+        }
+
+        &.google {
+          background-color: #E74B37;
+        }
       }
 
       img {

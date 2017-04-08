@@ -8,12 +8,14 @@ import { windowSizeChanged, authenticationStatusChanged } from '../../actions/ap
 @withTranslate
 @connect(state => ({
     window: state.app.get('window'),
+    locale: state.Intl.locale,
 }))
 export default class App extends Component {
     static propTypes = {
         children: PropTypes.object,
         dispatch: PropTypes.func,
         translate: PropTypes.func,
+        locale: PropTypes.string,
     }
 
     constructor(props) {
@@ -55,11 +57,12 @@ export default class App extends Component {
     }
 
     render() {
-        const {children, translate } = this.props;
+        const {children, translate, locale } = this.props;
         return (
             <div>
                 <MegaMenu
                     translate={translate}
+                    locale={locale}
                     updateAuthenticationStatus={this.updateAuthenticationStatus}
                 />
                 { children }

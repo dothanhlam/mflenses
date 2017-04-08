@@ -98,7 +98,7 @@ export class FacebookLogin extends Component {
         }
 
         return (
-            <button onClick={(e) => {
+            <button className="facebook" onClick={(e) => {
                 e.preventDefault();
                 FB.login(this.checkLoginState, { scope: this.props.scope });
             }}>

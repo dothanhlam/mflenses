@@ -5,18 +5,19 @@ import {getLenses} from 'actions/lens';
 @connect(state => ({
     asyncLoading: state.app.get('asyncLoading'),
     lenses: state.app.get('lenses'),
+    account: state.app.account,
 }))
 export default class Lens extends Component {
 
     static propTypes = {
         asyncLoading: PropTypes.bool,
         lenses: PropTypes.array,
+        account: PropTypes.object,
         dispatch: PropTypes.func,
     }
 
     constructor() {
         super();
-
     }
 
     componentDidMount() {
@@ -27,7 +28,11 @@ export default class Lens extends Component {
 
     }
 
-    buildLensDetail = (lenses, id) => {
+    shareLensImages = (e) => {
+
+    }
+
+    buildLensDetail = (lenses, id, account) => {
         return (
             <div className="lensDetail">
                 {
@@ -47,6 +52,10 @@ export default class Lens extends Component {
                                         <p>mfd: {e.get('mfd')}</p>
                                         <p>weight: {e.get('weight')}</p>
                                     </div>
+                                    { account ? <button onClick={(e) => {
+                                        e.preventDefault();
+                                            this.shareLensImages() }
+                                    }>I have this lens</button> : null }
                                     <div className="wrap">
                                         {
                                             gallery.map((g, index) => {
@@ -69,6 +78,7 @@ export default class Lens extends Component {
     }
 
     render() {
+        const { lenses, params, account } = this.props;
         if (this.props.lenses.length === 0) {
             return (<div>Loading ...</div>);
         }
@@ -76,7 +86,7 @@ export default class Lens extends Component {
         return (
             <div className='Lens'>
                 {
-                    this.buildLensDetail(this.props.lenses, this.props.params.id)
+                    this.buildLensDetail(lenses, params.id, account)
                 }
             </div>
         );

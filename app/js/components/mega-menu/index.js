@@ -7,6 +7,7 @@ export default class MegaMenu extends Component {
 
     static propTypes = {
         translate: PropTypes.func.isRequired,
+        locale: PropTypes.string.isRequired,
         updateAuthenticationStatus: PropTypes.func.isRequired,
     }
 
@@ -23,7 +24,7 @@ export default class MegaMenu extends Component {
     }
 
     render() {
-        const {translate, updateAuthenticationStatus} = this.props;
+        const {translate, updateAuthenticationStatus, locale} = this.props;
         const toggleMobileMenu = classNames({
             'show-on-mobile': this.state.toggleMobileMenu
         })
@@ -33,7 +34,7 @@ export default class MegaMenu extends Component {
                 <div className="menu">
                     <a className="menu-mobile" onClick={this.toggleMobileMenu}>Navigation</a>
                     <ul className={toggleMobileMenu}>
-                        <li><a href="/">{translate('home')}</a></li>
+                        <li><a href={`${locale}/`}>{translate('home')}</a></li>
                         <li className="menu-dropdown-icon">
                             <a href="#">{translate('categories')}</a>
                             <ul>
