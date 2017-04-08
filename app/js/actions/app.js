@@ -8,14 +8,15 @@ export const TEST_ASYNC_ACTION_SUCCESS = 'TEST_ASYNC_ACTION_SUCCESS';
 export const WINDOW_SIZE_CHANGED = 'WINDOW_SIZE_CHANGED';
 export const UPDATE_WINDOW_SIZE = 'UPDATE_WINDOW_SIZE';
 
-export const AUTHENTICATE = 'AUTHENTICATE';
-export const AUTHENTICATE_SUCCESS = 'AUTHENTICATE_SUCCESS';
-export const AUTHENTICATE_ERROR = 'AUTHENTICATE_ERROR';
+export const AUTHENTICATION_STATUS_CHANGED = 'AUTHENTICATION_STATUS_CHANGED';
+export const UPDATE_AUTHENTICATION_STATUS = 'UPDATE_AUTHENTICATION_STATUS';
 
-export function authenticate(accountType) {
+
+export function authenticationStatusChanged(accountType, response) {
     return {
-        type: AUTHENTICATE,
+        type: AUTHENTICATION_STATUS_CHANGED,
         accountType, // facebook, google, or twitter
+        response,
     }
 }
 

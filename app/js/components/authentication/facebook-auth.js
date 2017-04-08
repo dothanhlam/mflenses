@@ -25,12 +25,14 @@ export class FacebookLogin extends Component {
         super(props);
         this.state = {
             isConnected: false,
+            account: null,
         }
     }
 
     updateAuthenticationStatus = (response) => {
-        console.log('updateAuthenticationStatus: ', response.status)
-        this.setState({isConnected:response.status === 'connected'})
+        this.setState({
+            isConnected:response.status === 'connected',
+        });
     }
 
     componentDidMount() {
@@ -54,8 +56,6 @@ export class FacebookLogin extends Component {
                 version: this.props.version,
                 status: true, // check login status
             });
-
-        //    FB.getLoginStatus(this.updateAuthenticationStatus);
         }
     }
 
@@ -63,6 +63,7 @@ export class FacebookLogin extends Component {
         FB.api('/me', { fields: this.props.fields }, (me) => {
             me.accessToken = authResponse.accessToken;
             this.props.responseHandler(me);
+            this.setState({account: me});
         });
     };
 
@@ -76,15 +77,23 @@ export class FacebookLogin extends Component {
         }
     };
 
+    logout = (response) => {
+        this.updateAuthenticationStatus(response);
+        this.props.responseHandler();
+    }
+
     buildComponents = (state) => {
-        if (state.isConnected) {
+        if (state.isConnected && state.account) {
             return (
-                <button onClick={(e) => {
-                    e.preventDefault();
-                    FB.logout(this.updateAuthenticationStatus)}
-                }>
-                    Logout
-                </button>
+                <img
+                    onClick={(e) => {
+                        e.preventDefault();
+                        FB.logout(this.logout)}
+                    }
+                    alt={`${state.account.name}, logout`}
+                    title={`${state.account.name}, logout`}
+                    src={`//graph.facebook.com/${this.props.version}/${state.account && state.account.id}/picture`}
+                />
             )
         }
 
@@ -93,7 +102,7 @@ export class FacebookLogin extends Component {
                 e.preventDefault();
                 FB.login(this.checkLoginState, { scope: this.props.scope });
             }}>
-                Login
+                Login with Facebook
             </button>
         )
     }

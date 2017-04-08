@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import MegaMenu from '../../components/mega-menu';
 import { withTranslate } from 'react-redux-multilingual'
 
-import { windowSizeChanged } from '../../actions/app';
+import { windowSizeChanged, authenticationStatusChanged } from '../../actions/app';
 
 @withTranslate
 @connect(state => ({
@@ -22,6 +22,12 @@ export default class App extends Component {
             device: '',
             navigateVisible: false,
         };
+    }
+
+    updateAuthenticationStatus = (response) => {
+        const {dispatch} = this.props;
+        dispatch(authenticationStatusChanged('facebook', response));
+
     }
 
     updateDimensions = () => {
@@ -52,7 +58,10 @@ export default class App extends Component {
         const {children, translate } = this.props;
         return (
             <div>
-                <MegaMenu translate={translate}/>
+                <MegaMenu
+                    translate={translate}
+                    updateAuthenticationStatus={this.updateAuthenticationStatus}
+                />
                 { children }
             </div>
         );

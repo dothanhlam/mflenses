@@ -6,6 +6,7 @@ import {
     TEST_ASYNC_ACTION_ERROR,
     TEST_ASYNC_ACTION_SUCCESS,
     UPDATE_WINDOW_SIZE,
+    UPDATE_AUTHENTICATION_STATUS
 } from 'actions/app';
 
 import {
@@ -33,6 +34,10 @@ function testAsyncError(error) {
 }
 
 // app
+export function* updateAuthenticationStatus({accountType, response}) {
+    yield put({type: UPDATE_AUTHENTICATION_STATUS, response });
+}
+
 export function *updateWindow({size}) {
     yield put({type: UPDATE_WINDOW_SIZE, size});
 }

@@ -7,6 +7,7 @@ export default class MegaMenu extends Component {
 
     static propTypes = {
         translate: PropTypes.func.isRequired,
+        updateAuthenticationStatus: PropTypes.func.isRequired,
     }
 
     constructor(props) {
@@ -16,19 +17,13 @@ export default class MegaMenu extends Component {
         };
     }
 
-
-    responseFacebook = (response)  => {
-        console.log('responseFacebook: ', response);
-        //anything else you want to do(save to localStorage)...
-    }
-
     toggleMobileMenu = (e) => {
         this.setState({toggleMobileMenu: !this.state.toggleMobileMenu});
         e.preventDefault();
     }
 
     render() {
-        const {translate} = this.props;
+        const {translate, updateAuthenticationStatus} = this.props;
         const toggleMobileMenu = classNames({
             'show-on-mobile': this.state.toggleMobileMenu
         })
@@ -110,8 +105,7 @@ export default class MegaMenu extends Component {
                             </form>
                         </li>
                         <li>
-                            <FacebookLogin socialId="271112816669920"
-                                           responseHandler={this.responseFacebook}/>
+                            <FacebookLogin socialId="271112816669920" responseHandler={updateAuthenticationStatus}/>
                         </li>
                     </ul>
                 </div>

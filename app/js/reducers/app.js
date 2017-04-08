@@ -6,6 +6,7 @@ import {
     TEST_ASYNC_ACTION_ERROR,
     TEST_ASYNC_ACTION_SUCCESS,
     UPDATE_WINDOW_SIZE,
+    UPDATE_AUTHENTICATION_STATUS
 } from 'actions/app';
 
 import {
@@ -25,6 +26,12 @@ const initialState = Map({
 });
 
 const actionsMap = {
+    [UPDATE_AUTHENTICATION_STATUS]: (state, action) => {
+        return state.merge({
+            account: action.response,
+        });
+    },
+
     [UPDATE_WINDOW_SIZE]: (state, action) => {
         return state.merge({
             window: action.size,
