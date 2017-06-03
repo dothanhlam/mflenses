@@ -10,7 +10,6 @@
     "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dashboard -t 'React-Redux Boilerplate' -- webpack-dev-server --colors --no-info",
-    "api": "json-server --watch mock/db.json --port 3004",
     "build": "rm -rf ./build && NODE_ENV=\"production\" webpack",
     "lint-break-on-errors": "eslint ./app/js ./webpack.config.js -f table --ext .js --ext .jsx",
     "lint": "eslint ./app/js ./webpack.config.js -f table --ext .js --ext .jsx || true",

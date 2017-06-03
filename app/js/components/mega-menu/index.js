@@ -105,12 +105,6 @@ export default class MegaMenu extends Component {
                                 <input type="text" name="search_text" id="search_text" placeholder={translate('search')}/>
                             </form>
                         </li>
-                        <li>
-                            <FacebookLogin
-                                caption={translate('facebookLogin')}
-                                socialId="271112816669920"
-                                responseHandler={updateAuthenticationStatus}/>
-                        </li>
                     </ul>
                 </div>
             </div>
